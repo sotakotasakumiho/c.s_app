@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  get 'messages/index'
-  root "messages#index"
+  devise_for :users
+
+  resources :users, only: [:index, :show]
+  resources :posts, only: [:index, :show, :create] do
+    resources :messages, only: [:create]
+  end
+
+  root 'posts#index'
 end
