@@ -1,17 +1,21 @@
 class MessagesController < ApplicationController
   def create
-    @post= Post.find(params[:post_id])
-    @message = Messages.new(message_params)
-  end
+    @message = current_user.messages.new(message_params)
 
-  def destroy
-    @message = Message.find(params[:id])
-    @message.destroy
-    render :index
+    if @message.save
+       redirect_to (@post), notice: 'コメントが投稿されました'
+    else
+      redirect_to (@post), notice: 'コメントを入力してください'
+    end
+
+      respond_to do |format|
+        format.html { redirect_to (@post)}
+        format.json
+      end
   end
 
   private
   def message_params
-    params.require(:message).permit(:content, :post_id)
+    params.require(:message).permit(:content).merge(user_id: current_user.id, post_id: params[:post_id])
   end
 end
