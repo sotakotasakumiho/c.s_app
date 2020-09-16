@@ -1,21 +1,21 @@
 class MessagesController < ApplicationController
   def create
-    @message = current_user.messages.new(message_params)
-
+    @message = Message.new(message_params)
+    @message.user_id = current_user.id
     if @message.save
-       redirect_to (@post), notice: 'コメントが投稿されました'
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to (@post), notice: 'コメントを入力してください'
+      redirect_back(fallback_location: root_path)
     end
 
       respond_to do |format|
-        format.html { redirect_to (@post)}
+        format.html { redirect_to post_path(params[:post_id])}
         format.json
       end
   end
 
   private
   def message_params
-    params.require(:message).permit(:content).merge(user_id: current_user.id, post_id: params[:post_id])
+    params.require(:message).permit(:contet, :post_id)
   end
 end

@@ -20,9 +20,10 @@
     .comment 
       .commentBox
         .commentContents
-          = form_for @post do |form|
+          = form_with model: @post, id: 'new_message' do |form|
             = form.text_area :content, class: 'form_area'
-            = form.submit
+            = form.submit "送信", class: "form__submit"
+
           .comments
             %h4 投稿一覧
             - @posts.each do |post|
