@@ -1,0 +1,9 @@
+%h1 ユーザー詳細ページ
+%h3 
+  = @user.email
+%h2 投稿内容
+- @user.posts.each do |post|
+  = link_to post.content, post_path(post.id)
+  %hr
+= link_to "ユーザー一覧へ", users_path
+= link_to "ホームへ戻る", posts_path

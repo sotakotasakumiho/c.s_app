@@ -1,0 +1,74 @@
+.top_page{
+  padding: 0 60px;
+  background-color: #f8f8f8;
+  &__header{
+  max-width: 1040px;
+  margin: 0 auto;
+    &__inner{
+      padding-top: 15px;
+      display: flex;
+    }
+  }
+}
+.list{
+  font-size: 14px;
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  line-height: 32px;
+  height: 32px;
+  &__right{
+    position: relative;
+    display: flex;
+    padding: 0;
+    &__log_in{
+      padding-right: 30px;
+    }
+  }
+}
+
+.list a{
+  color: black;
+}
+.main{
+background-color: #f8f8f8;
+}
+.showmain{
+padding: 100px;
+margin: 0 auto;
+}
+.comment{
+  width: 700px;
+  margin: 0 auto;
+}
+.commentBox{
+  padding: 24px 40px 40px;
+  background-color: white;
+  margin-top: 10px;
+  text-align: center;
+}
+.commentBox input{
+  width: 600px;
+  height: 40px;
+  border-radius: 1em;
+  background-color: #3ccace;
+  color: white;
+}
+.commentBox textarea{
+  resize: none;
+  width: 600px;
+  min-height: 104px;
+  padding: 10px;
+  border-color: #3ccace;
+  border-width: 3px;
+  height: 120px;
+  white-space: normal;
+}
+.comments{
+  margin: 16px 0 10px;
+  text-align: left;
+  color: #777777;
+  a{
+    color: #777777;
+  }
+}

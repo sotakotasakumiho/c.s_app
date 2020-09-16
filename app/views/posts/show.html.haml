@@ -1,0 +1,17 @@
+%h1　投稿詳細ページ
+%h3
+  = @post.user.email
+%h3
+  = @post.content
+
+= form_with(model:[@post, @message], method: :post) do |f|
+  = f.text_area :content
+  = f.hidden_field :post_id, value: @post.id
+  = f.submit 'コメントする'
+
+%h2 コメント一覧
+- @messages.each do |m|
+  %p
+    = @message.content
+
+= link_to "ホームへ戻る", root_path
